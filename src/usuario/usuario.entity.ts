@@ -26,7 +26,7 @@ export class UsuarioEntity {
   @Column()
   nExtension: number;
 
-  @Column()
+  @Column({ type: 'enum', enum: Rol.values })
   rol: Rol;
 
   @OneToOne(() => UsuarioEntity, (usuario) => usuario.usuario)

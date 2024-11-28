@@ -5,6 +5,9 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { ClaseModule } from './clase/clase.module';
 import { BonoModule } from './bono/bono.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsuarioEntity } from './usuario/usuario.entity';
+import { ClaseEntity } from './clase/clase.entity';
+import { BonoEntity } from './bono/bono.entity';
 
 @Module({
   imports: [
@@ -17,8 +20,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'pre_parcial',
-      entities: [UsuarioModule, ClaseModule, BonoModule],
+      database: 'parcial',
+      entities: [UsuarioEntity, ClaseEntity, BonoEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,

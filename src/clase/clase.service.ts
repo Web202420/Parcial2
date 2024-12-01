@@ -14,6 +14,10 @@ export class ClaseService {
     private readonly claseRepository: Repository<ClaseEntity>,
   ) {}
 
+  async findAllClases(): Promise<ClaseEntity[]> {
+    return await this.claseRepository.find();
+  }
+
   async crearClase(clase: ClaseEntity): Promise<ClaseEntity> {
     if (clase.codigo.length !== 10)
       throw new BusinessLogicException(

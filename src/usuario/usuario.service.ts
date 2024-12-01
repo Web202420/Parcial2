@@ -15,6 +15,10 @@ export class UsuarioService {
     private readonly usuarioRepository: Repository<UsuarioEntity>,
   ) {}
 
+  async findAllUsuarios(): Promise<UsuarioEntity[]> {
+    return await this.usuarioRepository.find();
+  }
+
   async createUsuario(usuario: UsuarioEntity): Promise<UsuarioEntity> {
     if (usuario.rol === Rol.PROFESOR) {
       if (!['TICSW', 'IMAGINE', 'COMIT'].includes(usuario.gInvestigacion))

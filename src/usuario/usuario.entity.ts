@@ -6,8 +6,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Rol } from './rol.enum';
-import { ClaseEntity } from 'src/clase/clase.entity';
-import { BonoEntity } from 'src/bono/bono.entity';
+import { ClaseEntity } from '../clase/clase.entity';
+import { BonoEntity } from '../bono/bono.entity';
 
 @Entity()
 export class UsuarioEntity {
@@ -26,7 +26,7 @@ export class UsuarioEntity {
   @Column()
   nExtension: number;
 
-  @Column({ type: 'enum', enum: Rol.values })
+  @Column({ type: 'simple-enum', enum: Rol.values })
   rol: Rol;
 
   @OneToOne(() => UsuarioEntity, (usuario) => usuario.usuario)

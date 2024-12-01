@@ -16,4 +16,8 @@ export class UsuarioDto {
   @IsNumber()
   @IsNotEmpty()
   readonly nExtension: number;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly rol: string;
 }

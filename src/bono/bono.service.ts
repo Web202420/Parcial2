@@ -5,9 +5,9 @@ import { Repository } from 'typeorm';
 import {
   BusinessError,
   BusinessLogicException,
-} from 'src/shared/errors/business-errors';
-import { ClaseService } from 'src/clase/clase.service';
-import { UsuarioService } from 'src/usuario/usuario.service';
+} from '../shared/errors/business-errors';
+import { ClaseService } from '../clase/clase.service';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable()
 export class BonoService {

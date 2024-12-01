@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "423333bb-3965-4f99-97f0-2ef9c575614f",
+		"name": "Clase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29228723"
+	},
+	"item": [
+		{
+			"name": "Create Clase",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"clase_id\", data.id);",
+							"pm.globals.set(\"clase_codigo\", data.codigo);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clase",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clase"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clase"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4,\n    \"id\": \"314ec023-5e95-44fd-ba04-7c86ae02a91e\"\n}"
+				}
+			]
+		},
+		{
+			"name": "FindAll Clases",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of classes > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/clase",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clase"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FindAll Clases",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clase"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"14125f14-7783-4bfe-8ecf-e155d4ecc505\",\n        \"nombre\": \"Clase\",\n        \"codigo\": \"0123456789\",\n        \"creditos\": 4\n    },\n    {\n        \"id\": \"314ec023-5e95-44fd-ba04-7c86ae02a91e\",\n        \"nombre\": \"Clase\",\n        \"codigo\": \"0123456789\",\n        \"creditos\": 4\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "FindById Clase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/clase/{{clase_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clase",
+						"{{clase_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FindById Clase",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clase/{{clase_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clase",
+								"{{clase_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"14125f14-7783-4bfe-8ecf-e155d4ecc505\",\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}"
+				}
+			]
+		},
+		{
+			"name": "FindByCodigo Clase",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/clase/{{clase_codigo}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clase",
+						"{{clase_codigo}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FindByCodigo Clase",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clase/{{clase_codigo}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clase",
+								"{{clase_codigo}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"14125f14-7783-4bfe-8ecf-e155d4ecc505\",\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}"
+				}
+			]
+		}
+	]
+}

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors/business-errors.interceptor';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors/business-errors.interceptor';
 import { ClaseService } from './clase.service';
 import { ClaseDto } from './clase.dto';
 import { ClaseEntity } from './clase.entity';

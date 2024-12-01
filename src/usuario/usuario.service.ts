@@ -6,7 +6,7 @@ import { Rol } from './rol.enum';
 import {
   BusinessError,
   BusinessLogicException,
-} from 'src/shared/errors/business-errors';
+} from '../shared/errors/business-errors';
 
 @Injectable()
 export class UsuarioService {
@@ -60,7 +60,7 @@ export class UsuarioService {
         BusinessError.PRECONDITION_FAILED,
       );
 
-    if (usuario.bonos.length > 0)
+    if (usuario.bonos && usuario.bonos.length > 0)
       throw new BusinessLogicException(
         'No se puede eliminar el usuario con bonos asociados',
         BusinessError.PRECONDITION_FAILED,

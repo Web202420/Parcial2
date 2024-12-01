@@ -12,4 +12,12 @@ export class BonoDto {
   @IsString()
   @IsNotEmpty()
   readonly pClave: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly usuarioId: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly claseId: string;
 }

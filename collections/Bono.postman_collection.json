@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "a340d7ef-c543-407e-ae88-97c2edeecf11",
+		"name": "Bono",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29228723"
+	},
+	"item": [
+		{
+			"name": "Create Clase for Tests",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"clase_id\", data.id);",
+							"pm.globals.set(\"clase_codigo\", data.codigo);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/clase",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clase"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Clase",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clase"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Clase\",\n    \"codigo\": \"0123456789\",\n    \"creditos\": 4,\n    \"id\": \"314ec023-5e95-44fd-ba04-7c86ae02a91e\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Usuario for Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"usuario_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cedula\": 1234,\n    \"nombre\": \"Usuario\",\n    \"gInvestigacion\": \"IMAGINE\",\n    \"nExtension\": 1234,\n    \"rol\": \"PROFESOR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/usuario",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Usuario for Tests",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cedula\": 1234,\n    \"nombre\": \"Usuario\",\n    \"gInvestigacion\": \"IMAGINE\",\n    \"nExtension\": 1234,\n    \"rol\": \"PROFESOR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuario",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cedula\": 1234,\n    \"nombre\": \"Usuario\",\n    \"gInvestigacion\": \"IMAGINE\",\n    \"nExtension\": 1234,\n    \"rol\": \"PROFESOR\",\n    \"id\": \"e359b09e-c6fa-4861-ae72-013801f81f2b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"bono_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monto\": 1234,\n    \"calificacion\": 5,\n    \"pClave\": \"A\",\n    \"usuarioId\": \"{{usuario_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/bono",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bono"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Bono",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"monto\": 1234,\n    \"calificacion\": 5,\n    \"pClave\": \"A\",\n    \"usuarioId\": \"{{usuario_id}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bono",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bono"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"monto\": 1234,\n    \"calificacion\": 5,\n    \"pClave\": \"A\",\n    \"usuarioId\": \"0a7834a0-3e65-4613-bfc5-57dddbc0ffc6\",\n    \"usuario\": {\n        \"id\": \"0a7834a0-3e65-4613-bfc5-57dddbc0ffc6\",\n        \"cedula\": 1234,\n        \"nombre\": \"Usuario\",\n        \"gInvestigacion\": \"IMAGINE\",\n        \"nExtension\": 1234,\n        \"rol\": \"PROFESOR\"\n    },\n    \"clase\": {\n        \"id\": \"b69764e7-2456-483b-b63f-099812db036f\",\n        \"nombre\": \"Clase\",\n        \"codigo\": \"0123456789\",\n        \"creditos\": 4\n    },\n    \"id\": \"d2d91e49-be1e-41a3-9e81-3b5b4a759e12\"\n}"
+				}
+			]
+		},
+		{
+			"name": "FindAll Bonos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of bonos > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bono",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bono"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Bonos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bono",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bono"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"38791821-d660-4848-aeb8-2cbb7bfd7efb\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    },\n    {\n        \"id\": \"e4f6a5fb-ec25-4307-8642-08583df92463\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "FindByCodigoClase Bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bono/clase/{{clase_codigo}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bono",
+						"clase",
+						"{{clase_codigo}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FindByCodigo",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"07164852-d71a-4e55-90b0-e8d9f936bb99\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    },\n    {\n        \"id\": \"d2d91e49-be1e-41a3-9e81-3b5b4a759e12\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "FindByUserId Bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bono/usuario/{{usuario_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bono",
+						"usuario",
+						"{{usuario_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FindByUserId",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bono/usuario/{{usuario_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bono",
+								"usuario",
+								"{{usuario_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"07164852-d71a-4e55-90b0-e8d9f936bb99\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    },\n    {\n        \"id\": \"d2d91e49-be1e-41a3-9e81-3b5b4a759e12\",\n        \"monto\": 1234,\n        \"calificacion\": 5,\n        \"pClave\": \"A\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "DeleteById Bono",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/bono/{{bono_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"bono",
+						"{{bono_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DeleteById Clase",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bono/{{bono_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bono",
+								"{{bono_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	]
+}
